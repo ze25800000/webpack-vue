@@ -19,7 +19,19 @@ module.exports = {
                     'css-loader',
                     'stylus-loader'
                 ]
-            }
+            },
+            {
+                test: /\.(gif|png|jpg|svg|jpeg)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 1024,
+                            name:'[name]-aaa.[ext]'
+                        }
+                    }
+                ]
+            },
         ]
     }
 }
