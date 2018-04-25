@@ -1,6 +1,9 @@
 const path = require('path')
 
-module.exports = {
+const isDev = process.env.NODE_ENV === 'development' //判断是否是开发环境
+
+const config = {
+    target: 'web', //开发目标是web平台
     entry: path.join(__dirname, 'src/index.js'),
     output: {
         filename: 'bundle.js',
@@ -27,7 +30,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             limit: 1024,
-                            name:'[name]-aaa.[ext]'
+                            name: '[name]-aaa.[ext]'
                         }
                     }
                 ]
@@ -35,3 +38,14 @@ module.exports = {
         ]
     }
 }
+
+if (isDev) {
+    config.devServer = {
+        port: 8000,
+        host: '0.0.0.0',
+        overlay: {
+            errors: true
+        }
+    }
+}
+module.exports = config
