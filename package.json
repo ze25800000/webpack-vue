@@ -1,0 +1,19 @@
+{
+  "name": "webpack-vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"webpack --config webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "2.5.13",
+    "vue-loader": "13.6.0",
+    "webpack": "3.10.0",
+    "css-loader": "0.28.7",
+    "vue-template-compiler": "2.5.13"
+  }
+}
