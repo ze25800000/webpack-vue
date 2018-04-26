@@ -9,7 +9,6 @@
         <button class="destory" @click="deleteTodo"></button>
     </div>
 </template>
-
 <script>
     export default {
         props: {
