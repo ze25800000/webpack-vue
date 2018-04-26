@@ -1,6 +1,6 @@
 <template>
     <header class="main-header">
-        <h1>YZto</h1>
+        <h1>YZtodo</h1>
     </header>
 </template>
 <script type="text/ecmascript-6">
