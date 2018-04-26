@@ -55,7 +55,7 @@ if (isDev) {
 } else {
     config = merge(baseConfig, {
         entry: {
-            app: path.join(__dirname, '../src/index.js'),
+            app: path.join(__dirname, '../client/index.js'),
             vender: ['vue']
         },
         output: {
@@ -81,7 +81,7 @@ if (isDev) {
                 }
             ]
         },
-        plugins: [
+        plugins: defaultPlugins.concat([
             new ExtractPlugin('styles.[contentHash:8].css'),
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'vender'
@@ -89,7 +89,7 @@ if (isDev) {
             new webpack.optimize.CommonsChunkPlugin({
                 name: "runtime"
             })
-        ]
+        ])
     })
 }
 module.exports = config
