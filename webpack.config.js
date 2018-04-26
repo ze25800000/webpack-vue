@@ -74,7 +74,11 @@ if (isDev) {
         new webpack.NoEmitOnErrorsPlugin() //减少不必要信息展示
     )
 } else {
-    config.output.filename='[name].[chunkhash:8].js' //开发环境不可以使用chunkhash
+    config.entry = {
+        app: path.join(__dirname, 'src/index.js'),
+        vender: ['vue']
+    }
+    config.output.filename = '[name].[chunkhash:8].js' //开发环境不可以使用chunkhash
     config.module.rules.push({
         test: /\.styl$/,
         use: ExtractPlugin.extract({
@@ -92,7 +96,13 @@ if (isDev) {
         })
     })
     config.plugins.push(
-        new ExtractPlugin('styles.[contentHash:8].css')
+        new ExtractPlugin('styles.[contentHash:8].css'),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vender'
+        }),//vender必须放在runtime前面
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "runtime"
+        })
     )
 
 }
